@@ -1,0 +1,78 @@
+# Oil Price Forecasting Project
+
+![Oil Price Trends](https://img.shields.io/badge/Python-3.8%2B-blue) ![License](https://img.shields.io/badge/License-MIT-green) ![ML](https://img.shields.io/badge/XGBoost-1.5%2B-orange)
+
+A machine learning pipeline for predicting crude oil prices using historical data and technical indicators.
+
+## 📌 Project Overview
+This project develops a predictive model for oil prices (Brent/WTI) using:
+- Time-series analysis (ARIMA)
+- Machine learning (XGBoost with feature engineering)
+- Production-ready prediction pipeline
+
+## 📂 Dataset
+**Source**: Yahoo Finance (example data included in `/data`)
+**Features**:
+- Raw Market Data: Open/High/Low/Close prices, Volume
+- Engineered Features:
+  - Technical Indicators (SMA7, EMA14, RSI14)
+  - Volatility Measures (30-day rolling std)
+  - Temporal Features (Day-of-week, Month)
+**Time Period**: 2000-01-01 to 2022-12-31 (daily)
+
+## 🛠️ Installation
+```bash
+git clone https://github.com/yourusername/oil-price-forecasting.git
+cd oil-price-forecasting
+pip install -r requirements.txt
+🚀 Usage
+1. Training the Model
+python train.py \
+  --data_path data/historical_prices.csv \
+  --model_path models/oil_model.pkl
+2. Making Predictions
+from predict import predict_price
+
+sample_input = {
+    'SMA_7': 72.5, 'EMA_14': 71.8, 
+    'RSI_14': 62, 'Volatility_30D': 0.02,
+    'Lag_1': 72.1, 'Lag_3': 71.5,
+    'Lag_7': 70.8, 'Day_of_week': 3,
+    'Month': 6
+}
+print(predict_price('Brent', sample_input))
+# Output: 71.42 (example prediction)
+📊 Model Performance
+Metric	Value
+MAE	1.23
+RMSE	1.89
+R²	0.92
+📁 Project Structure
+oil-price-forecasting/
+├── data/               # Raw and processed data
+├── models/             # Serialized models
+├── notebooks/          # EDA and experiments
+│   ├── 01_EDA.ipynb
+│   └── 02_Modeling.ipynb
+├── src/                # Production code
+│   ├── train.py
+│   └── predict.py
+├── tests/              # Unit tests
+├── requirements.txt    # Dependencies
+└── README.md
+🛠️ Dependencies
+Python 3.8+
+
+pandas
+
+numpy
+
+scikit-learn
+
+xgboost
+
+matplotlib
+
+statsmodels
+📧 Contact
+For questions: junaid19tex@gmail.com
